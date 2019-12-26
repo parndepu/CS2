@@ -1,0 +1,22 @@
+#include "object_construction.hpp"
+
+myClass::myClass()
+{
+    std::cout << "Default constructor was called." << std::endl;
+}
+
+myClass::myClass(const myClass& copy)
+{
+    std::cout << "Copy constructor was called." << std::endl;
+}
+
+myClass::~myClass()
+{
+    std::cout << "Destructor was called." << std::endl;
+}
+
+myClass myClass::operator=(const myClass& rhs)
+{
+    std::cout << "Operator = overload was called." << std::endl;
+    return * this;
+}

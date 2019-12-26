@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+#include <stack>
+#include <fstream>
+#include <vector>
+
+std::string infix2prefix(std::string infix)
+{
+    std::vector<std::string> v;
+    std::string word = "";
+    
+    // Reverse expression
+    for (int i = infix.size() - 1; i >= 0; --i) {
+           
+        if (infix.at(i) == ' ') { 
+            if (word == "(") { v.push_back(")"); }
+            else if (word == ")") { v.push_back("("); }
+            else { v.push_back(word); }
+            word = "";
+        }
+        else if (infix.at(i) != ';') { word = (std::string() + infix.at(i)) + word; }
+    }
+    v.push_back(")");
+   
+    // Convert to postfix
+    std::stack<std::string> s;
+    for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); ++it) {
+    
+        std::string token = *it;
+        if (token == ")") {
+            std::string right = s.top(); s.pop();
+            std::string oper = s.top(); s.pop();
+            std::string left = s.top(); s.pop();
+            s.push(left + right + oper);
+        } else {
+            if (token != "(") { s.push(token + " "); }
+        }
+    }
+
+    // Revert postfix to prefix
+    std::string postfix = s.top();
+    std::string prefix = "";
+    word = "";
+    for (int i = postfix.size() - 1; i >= 0; --i) {
+        if (postfix.at(i) == ' ') {
+            prefix += word;
+            word = "";
+        }
+        else { word = (std::string() + postfix.at(i)) + word; }
+    } 
+    prefix += postfix.at(0);
+    
+    return prefix;
+}
+
+int main()
+{
+    std::ifstream in("data3-1.txt");
+  
+    std::string line;
+    while (std::getline(in, line)) {
+        std::cout << "============================================" << std::endl;
+        std::cout << "Infix: " << line << std::endl;
+        std::cout << "Prefix: " << infix2prefix(line) << std::endl;
+    }
+}

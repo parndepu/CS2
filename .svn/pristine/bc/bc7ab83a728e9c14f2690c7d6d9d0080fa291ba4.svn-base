@@ -1,0 +1,13 @@
+part 1: 80
+	//-instructor tests do not compile because Top is not defined
+	//-top should also be incorporated into your push/pop tests
+	//-request regrade when ready
+	-still does not pass all tests
+	-remember = does not swap both values, it only sets the lhs equal to the rhs
+	-you dont check the return values of pop and top in yout tests for copy ctor and equal which is where you will catch these errors
+
+part 2: 100
+	-good job
+
+part 3: 100
+	-good job

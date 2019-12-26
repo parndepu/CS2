@@ -1,0 +1,42 @@
+
+#include<iostream>
+
+int fib(int n)
+{
+    if((n==1)||(n==0))
+    {
+        return(n);
+    }
+    else
+    {
+        return(fib(n-1)+fib(n-2));
+    }
+}
+
+int fib_tail(int n, int a=0, int b =1) 
+{
+    if (n == 0)
+        return (a);
+    
+    if (n == 1)
+        return (b);    
+    
+    return fib_tail(n - 1, b, a + b); 
+
+}
+
+int main() {
+
+    int n, i=0;
+
+    std::cout << "Input the number of Fibonacci Series:";
+    std::cin >> n;
+    std::cout << "\n Fibonacci Series"<< std::endl;
+
+    while(i < n) {
+        std::cout<< fib(i) << " " << fib_tail(i) <<std::endl;
+        i++;
+    }
+    return 0;
+}
+

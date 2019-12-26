@@ -1,0 +1,12 @@
+part 1: 90 regrade
+	-output operator not printing bigints that equal 0
+	-char[] constructor is failing tests
+	-correct issues and request a regrade to earn some points back
+
+part 2: 90 regrade
+	-add more tests cases
+	-make add is not printing the results
+	-subscript fails some tests (char[] constructor is still failing tests too)
+
+part 3: 90
+	-failed test_multiply.cpp

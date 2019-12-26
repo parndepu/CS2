@@ -1,0 +1,61 @@
+// reading a text file
+
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+
+void readText(std::ifstream& file) {
+
+    char ch;
+    file.get(ch);
+    while (!file.eof()) {
+        std::cout << ch;
+        file.get(ch);
+    }
+    std::cout << '\n';
+}
+
+void readNumbers(std::ifstream& file) {
+
+    int left = 0, right = 0;
+    int number; char semicolon; int count = 0;
+    while (file >> number) {
+        // Detect semicolon
+        file >> semicolon;
+        
+        // Assign left and right number
+        if (left == 0) {
+            left = number;
+        } 
+        else {
+            right = number;
+        }
+
+        // Compute result if left and right not zero
+        if (left && right != 0) {
+            std::cout << "result: " << left + right << std::endl;
+            left = 0; right = 0;
+        }
+    }
+}
+
+int main() {
+
+    std::ifstream dataFile ("fileio-data-1.txt");
+    std::ifstream textFile ("fileio-text.txt");
+
+    std::cout << "================" << std::endl;
+    // Read text from file
+    readText(textFile);
+    std::cout << "================" << std::endl;
+    // Read number from file
+    readNumbers(dataFile);
+
+    dataFile.close();
+    textFile.close();
+    return 0;
+}
+
+
+
+    

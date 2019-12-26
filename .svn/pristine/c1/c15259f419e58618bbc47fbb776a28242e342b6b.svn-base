@@ -1,0 +1,28 @@
+#include"object_construction.hpp"
+
+void func_call_by_value (myClass myObject) {
+    std::cout<<"Hello! this is call by value" <<std::endl;
+}
+
+void func_call_by_ref(myClass * myObject){
+    std::cout<<"Hello! this is call by reference" <<std::endl;
+}
+
+int main(){
+    myClass ex1;        // Default constructor was called
+    myClass ex2(ex1);   // Copy constructor was called
+    myClass ex3;        // Default constructor was called
+
+    ex3 = ex1;          // Overload == was called
+
+    myClass * temp;
+    *temp = ex3;
+
+    std::cout << "Before call by value" <<std::endl;
+    func_call_by_value(ex3);
+    std::cout << "Before call by reference" <<std::endl;
+    func_call_by_ref(temp);
+
+    return 0;
+
+}

@@ -1,0 +1,13 @@
+part 1: 88
+	-capacity is defined incorrectly
+	-lessThen, substring, and find string fail instructor tests
+
+part 2: 90 regarde
+	//-a compile time error in your cpp is preventing your code from compiling to test
+	//-fix this and ensure your code passes the oracle tests, then request a regrade
+
+part 3: 100
+	-good job
+
+part 4: 95
+	-bytes output is lower than expected

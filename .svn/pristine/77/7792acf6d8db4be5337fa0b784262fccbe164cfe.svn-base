@@ -1,0 +1,24 @@
+1. Which functions take the longest?
+
+Answer:     bubble_sort(std::vector<int, std::allocator<int> >&) [2]
+
+2. How long do they take?
+
+    BS: 98% of program execution time is spent in main function and its children, the child function --> "bubble_sort(std::vector<int, std::allocator<int> >&) [2]" took  94.4% of program execution time, with total s/call = 6.92. This function is the main bottleneck in sort_report
+
+    QS: 0.0% of program execution time is spent in function --> "quick_sort(std::vector<int, std::allocator<int> >&, int, int) [36]". This sorting technique is the fastest one.
+
+    SS: 97.6% of program execution time is spent in main function and its children, the child function --> " selection_sort(std::vector<int, std::allocator<int> >&) [2]" takes 94.9% of the execution time, with total s/call =  3.56
+
+3. Why do you think they're slow?
+   
+   Bubble sort algorithm uses exchanging method which is very simple, yet, slowest algorithm among these 3 sorting methods. It compares the first and second element of the list and swaps it, similarly, second and third element are compared and swapped, and this comparing and swapping go on to the end of the list. in call graph report (the third entry), the function "bubble_sort(std::vector<int, std::allocator<int> >&) [2]" got called itself 1348198538/1348228538 times. It is a red flag that this function is a slowest area of code in the program.
+ 
+
+
+4. What function in sort program took the longest and give small explanation? Whay it bottle necks.
+
+   Based on the information from profiling, both bubble sort and selection sort took longer execution time compare to quick-sort. However, selection-sort seems to outperform bubble sort as bubble sort has to compare adjacent elements and swap them in linear time; whereas, selection sort is slightly faster as the largest element will be selected and swapped that particular element with the last element (O (n^2) time)
+   The function "bubble_sort(std::vector<int, std::allocator<int> >&) [2]" took  94.4% of program execution time, with total s/call = 6.92. This function is the main bottleneck in this program.
+
+
